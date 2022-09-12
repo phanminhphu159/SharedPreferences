@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">SharedPreferencesTesting</string>
+    <string name="ItemName">Item name</string>
+    <string name="NoItem">You don\'t have any items in this list.</string>
+    <string name="EnterCartName">Enter Cart name</string>
+    <string name="EnterListName">Enter list name</string>
+    <string name="AddNewItem">Add New item</string>
+    <string name="NoCartList">You don\'t have any cart list.</string>
+    <string name="Cancel">Cancel</string>
+    <string name="Update">Update</string>
+    <string name="Create">Create</string>
+</resources>
