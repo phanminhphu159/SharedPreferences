@@ -55,9 +55,6 @@ class MainActivity : AppCompatActivity(), CartListAdapter.OnItemClickedListener 
 
     private fun setUpData() {
         myPreferences = MyPreferences.getPreferences(this)
-        if (myPreferences?.getListCart() == null) {
-            myPreferences?.setListCart(mutableListOf<Cart>())
-        }
     }
 
     private fun setOnCLickListener() {

@@ -34,7 +34,7 @@ class MyPreferences(context: Context) {
 
     fun getListCart(): MutableList<Cart> {
         val jsonText: String? =
-            sharedPreferences?.getString(Config.listCart, null)
+            sharedPreferences?.getString(Config.listCart, "[]")
         val listType: Type = object : TypeToken<MutableList<Cart>?>() {}.type
         return gson.fromJson(jsonText, listType)
     }
