@@ -1,5 +1,6 @@
 package com.example.sharedpreferencestesting
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
@@ -29,6 +30,10 @@ class ShowItemsListActivity : AppCompatActivity(), ItemsListAdapter.OnItemClicke
         setOnCLickListener()
         setUpData()
         setUpRecyclerView()
+    }
+
+    override fun onBackPressed() {
+        finish()
     }
 
     override fun itemClick(item: Items) {
@@ -120,6 +125,10 @@ class ShowItemsListActivity : AppCompatActivity(), ItemsListAdapter.OnItemClicke
 
     private fun updateCart() {
         myPreferences?.editCart(this.position, this.cart)
-        cart.listItem?.let { i -> itemsListAdapter?.setItemsList(i) }
+        this.cart.listItem?.let { i -> itemsListAdapter?.setItemsList(i) }
+        val data = Intent()
+        data.putExtra("cart", this.cart)
+        data.putExtra("position", this.position)
+        setResult(RESULT_OK, data)
     }
 }

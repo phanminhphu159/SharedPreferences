@@ -29,11 +29,26 @@ class MainActivity : AppCompatActivity(), CartListAdapter.OnItemClickedListener 
         setUpRecyclerView()
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 0x9345) {
+            if (resultCode == RESULT_OK) {
+                if (data == null) {
+                    return
+                }
+                val tempCart: Cart = data.extras?.get("cart") as Cart
+                val tempCartPosition: Int = data.extras?.get("position") as Int
+                myPreferences?.editCart(tempCartPosition, tempCart)
+                cartListAdapter?.setCartList(myPreferences?.getListCart())
+            }
+        }
+    }
+
     override fun itemClick(cart: Cart, position: Int) {
         val intent = Intent(this@MainActivity, ShowItemsListActivity::class.java)
         intent.putExtra("cart", cart)
         intent.putExtra("position", position)
-        startActivity(intent)
+        startActivityForResult(intent, 0x9345)
     }
 
     override fun editItem(cart: Cart, position: Int) {
